@@ -1,0 +1,28 @@
+div {
+  border-style: solid;
+  border-width: medium;
+  border-color: blue;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.pageBox {
+  width: 50%;
+}
+
+#left-side {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftSideBar {
+  display: flex;
+  width: 15%;
+}
+
+.leftContent {
+  width: 85%;
+}
