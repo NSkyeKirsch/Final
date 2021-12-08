@@ -64,3 +64,20 @@ div {
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
 }
+
+.fixedBox {
+  display:flex;
+  position: fixed;
+  justify-content: center;
+  margin-top: 37%;
+  width: 50%;
+  height:11vh;
+
+}
+
+#message-input{
+  width: 70%;
+  margin-right: 5vh;
+  font-size: x-large;
+  text-align: center;
+}

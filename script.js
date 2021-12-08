@@ -6,26 +6,31 @@ let animate;
 let mainContentElement;
 let alBox;
 let alNumMessages = 0;
+let inputElement;
+let sendButtonElement;
+let correctAns;
 
 
 document.addEventListener("DOMContentLoaded", function(){
 
   mainContentElement = document.querySelector(".mainContent");
   rightSideElement = document.querySelector("#right-side");
+  inputElement = document.querySelector("#message-input");
+  sendButtonElement = document.querySelector('#send-button');
 
-    for (var i = 0; i < chatMessagesOne.length; i++) {
-      createElementProper(chatMessagesOne[i]);
-    }
+  alTime(alMessagesOne);
 
-    alTime(alMessagesOne);
+
+  sendButtonElement.addEventListener("click", function(){
+    isCorrect();
+  })
+
+
 
 
 
   })
 
-  //inputElement.addEventListener("click", function(){
-
-//  })
 
 let chatMessagesOne = [
   {
@@ -82,12 +87,14 @@ function alTime(database){
 function off(database) {
   alBox = document.querySelector("#contentAlBox");
   alBox.remove();
+  alNumMessages = alNumMessages + 1;
   if(alNumMessages < database.length){
-    alNumMessages = alNumMessages + 1;
     alTime(database);
   } else {
     alNumMessages = 0;
-
+    for (var i = 0; i < chatMessagesOne.length; i++) {
+      createElementProper(chatMessagesOne[i]);
+    }
   }
 }
 
@@ -164,8 +171,7 @@ function createElementProper(incomingJSON) {
   window.setInterval(addTransform, ((incomingJSON['Delay'] * 1000)));
 
   if(incomingJSON.Event[0] == "input"){
-
-    createInput();
+    correctAns = incomingJSON.Event[1];
   }
 
   function addTransform(){
@@ -230,6 +236,19 @@ function createAlementProper(incomingJSON){
 
 }
 
+function isCorrect(){
+  var ansName = inputElement.value;
+
+  if(ansName == correctAns){
+    //next part
+    console.log("Correct!" + " " + ansName + " " + correctAns);
+  } else {
+    //do a shake
+    console.log("No!" + " " + ansName + " " + correctAns);
+  }
+}
+
+/*
 function createInput(){
 
   let newInputElement = document.createElement("INPUT");
@@ -240,3 +259,4 @@ function createInput(){
   rightSideElement.appendChild(newInputElement);
 
 }
+*/
